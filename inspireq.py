@@ -592,7 +592,7 @@ class RecordsDB(GenericObject):
 
     def prescan_with_threading(self):
         threads = list()
-        pbar = tqdm.tqdm(self.records, desc="prescanning records")
+        pbar = tqdm.tqdm(self.records, desc="prescanning records (downloading if needed or requested)")
         for record in self.records:
             x = threading.Thread(
                 target=RecordsDB.get_record_thread,
