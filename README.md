@@ -30,3 +30,6 @@ cd lblpmp
 ./print_pmp_text.sh example_input.txt --download
 ```
 
+# Explore...
+
+- to get all ALICE publications get this file - [link](https://github.com/matplo/pyarxiv/blob/master/alice/pubpageprod/alice_abs_ids.txt)
