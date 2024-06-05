@@ -47,7 +47,7 @@ echo_warning "This will print the PMP text for the year ${this_year} - will take
 separator "List of papers published in journals"
 ./execvenv.sh ./process_csv.py --input ${foutput} --pmp-year ${this_year}
 
-separator "List of papers *including* pre-prints (submitted papers or other reports)"
+separator "List of pre-prints (submitted; other reports)"
 ./execvenv.sh ./process_csv.py --input ${foutput} --pmp-year ${this_year} --preprints
 
 separator "done."
