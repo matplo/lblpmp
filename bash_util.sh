@@ -127,6 +127,12 @@ function separator()
 }
 export -f separator
 
+function separator_plain()
+{
+	echo -e "$(padding "[ ${1} ]" "-" 50 center)"
+}
+export -f separator_plain
+
 function echo_note()
 {
 	echo_warning "$(padding "[note] ${@}" "-" 10 left)"

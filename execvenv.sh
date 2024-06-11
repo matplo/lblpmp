@@ -119,9 +119,11 @@ set -e # Re-enable immediate exit
 if [ $exit_status -eq 0 ]; then
     conditional_echo "Command executed successfully, removing log file." 2>&1 | tee -a $LOGFILE
     rm -f $LOGFILE
+	retval=0
 else
     VERBOSE=1
     conditional_echo "Command failed with exit code $exit_status, see $LOGFILE for details." 2>&1 | tee -a $LOGFILE
+	retval=$exit_status
 fi
 
 # Optionally deactivate the virtual environment
@@ -130,3 +132,5 @@ then
 		conditional_echo "Deactivating virtual environment..." 2>&1 | tee -a $LOGFILE
 		deactivate
 fi
+
+exit $retval

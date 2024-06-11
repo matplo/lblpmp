@@ -61,8 +61,7 @@ class GenericObject(object):
                     yml = _f.read()
         d = yaml.safe_load(yml)
         if not isinstance(d, dict):
-            print(d)
-            raise ValueError("Invalid YAML input")
+            raise ValueError(f"Invalid YAML input {d}")
         for k in d:
             if ignore_none and d[k] is None:
                 continue
@@ -737,6 +736,9 @@ def rewrite_text_to_yaml(filename, assume_id='arxiv_id'):
     with open(filename, "r") as f:
         lines = f.readlines()
     for i, line in enumerate(lines):
+        line = line.split(' ')[0]
+        if len(line) < 1:
+            continue
         _rtmp = starting_record_from_string(line.strip())
         _d['records'].append(_rtmp.basic_dict())
     foutputname = filename + ".yaml"
@@ -788,7 +790,8 @@ def main():
     db = None
     if args.file:
         # if file extension is .txt, convert to .yaml
-        if args.file.endswith('.txt'):
+        # if args.file.endswith('.txt'):
+        if not args.file.endswith('.yaml'):
             args.file = rewrite_text_to_yaml(args.file)
         db = RecordsDB(args.file, args=args, verbose=args.debug)
         for _r in tqdm.tqdm(db.records, desc='reading records'):
