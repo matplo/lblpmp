@@ -112,7 +112,7 @@ def do_process_file(args):
 				args.prepend = ' ' + args.prepend
 			if args.show_date:
 				if 'n/a' not in jinfo:
-					s = f'{number}){args.prepend} "{title}," {jinfo}, [{sdate}] \n{surl}'
+					s = f'{number}){args.prepend} "{title}," {jinfo} [{sdate}] \n{surl}'
 				else:
 					s = f'{number}){args.prepend} "{title}," [{sdate}] \n{surl}'
 			else:
