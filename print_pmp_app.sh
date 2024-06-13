@@ -48,18 +48,18 @@ fi
 this_year=$(date '+%Y')
 
 echo_info "This will print the PMP text for the year ${this_year} - will take July-previous to July-current..."
-separator_plain "PMP LISTING"
+separator_plain "PMP LISTING BEGIN"
 
 echo ""
 separator_plain "List of papers published in journals"
 echo ""
-./execvenv.sh ./process_csv.py --input ${foutput} --pmp-year ${this_year}
+./execvenv.sh ./process_csv_rnc.py --input ${foutput} --pmp-year ${this_year} --show-date
 
 echo ""
 separator_plain "List of pre-prints (submitted; other reports)"
 echo ""
-./execvenv.sh ./process_csv.py --input ${foutput} --pmp-year ${this_year} --preprints-only
+./execvenv.sh ./process_csv_rnc.py --input ${foutput} --pmp-year ${this_year} --preprints-only --show-date
 
 echo ""
-separator_plain "done."
+separator_plain "PMP LISTING END"
 cd -

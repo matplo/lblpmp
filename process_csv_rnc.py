@@ -101,16 +101,27 @@ def do_process_file(args):
 			surl = 'https://doi.org/{}'.format(row['doi'])
 			if 'None' in surl and (args.preprints or args.preprints_only):
 				surl = row['url_record']
+			s = ''
+			title = title.rstrip('"').lstrip('"')
+			if 'n/a' not in jinfo:
+					jinfo_a = jinfo.split(' ')
+					# revert the order of the last two items - typically year and page
+					jinfo = ' '.join(jinfo_a[:-2]) + ' ' + jinfo_a[-1] + ' ' + jinfo_a[-2]
+			# prepend with a space
+			if args.prepend and ' ' != args.prepend[0]:
+				args.prepend = ' ' + args.prepend
 			if args.show_date:
 				if 'n/a' not in jinfo:
-					print(f'{number}) {args.prepend} "{title}", {jinfo}, {surl}, {sdate}')
+					s = f'{number}){args.prepend} "{title}," {jinfo}, [{sdate}] \n{surl}'
 				else:
-					print(f'{number}) {args.prepend} "{title}", {surl}, {sdate}')
+					s = f'{number}){args.prepend} "{title}," [{sdate}] \n{surl}'
 			else:
 				if 'n/a' not in jinfo:
-					print(f'{number}) {args.prepend} "{title}", {jinfo}, {surl}')
+					s = f'{number}){args.prepend} "{title}," {jinfo} \n{surl}'
 				else:
-					print(f'{number}) {args.prepend} "{title}", {surl}')
+					s = f'{number}){args.prepend} "{title}," \n{surl}'
+			s = s.replace('","', ',"')
+			print(s)
 			print()
 			number = number + 1
 
