@@ -36,6 +36,9 @@ def date_ok(sdate, args, row):
 	if args.pmp_year:
 		cutoffdate_min = datetime.strptime('{}-07-01'.format(args.pmp_year-1), '%Y-%m-%d').date()
 		cutoffdate_max = datetime.strptime('{}-07-01'.format(args.pmp_year-0), '%Y-%m-%d').date()
+	if args.pr_year:
+		cutoffdate_min = datetime.strptime('{}-07-31'.format(args.pr_year-1), '%Y-%m-%d').date()
+		cutoffdate_max = datetime.strptime('{}-08-01'.format(args.pr_year-0), '%Y-%m-%d').date()
 	if args.after_date:
 		try:
 			cutoffdate_min = datetime.strptime('{}'.format(args.after_date), '%Y-%m-%d').date()     
@@ -126,6 +129,7 @@ def main():
 	parser.add_argument('--input', help="csv file", type=str, default='prog_report_alice_pubs_2023-07-28.csv')
 	year = parser.add_mutually_exclusive_group(required=False)
 	year.add_argument('--pmp-year', help="current year - will take July-previous to July-current", type=int, default=None)
+	year.add_argument('--pr-year', help="current year - will take progress report year: August-previous to August-current", type=int, default=None)
 	year.add_argument('--fiscal-year', '--FY', help="current fiscal year - will take Oct-previous to Sept-current", type=int, default=None)
 	year.add_argument('--calendar-year', help="current year - will take Dec-previous to Dec-current", type=int, default=None)
 	parser.add_argument('--after-date', help='date from which to start - listing Y-m-d', type=str, default='')
