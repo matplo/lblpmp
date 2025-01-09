@@ -1,0 +1,24 @@
+\documentclass[11pt]{article}
+
+% Choose bibliography style for formatting list of publications
+% \usepackage[style=ieee,url=false,doi=false,maxbibnames=99,sorting=ydnt,dashed=false]{biblatex}
+\usepackage[backend=biber,style=ieee,url=false,doi=true,maxbibnames=99,sorting=none,dashed=false]{biblatex}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[margin=0in]{geometry}
+\setlength{\parindent}{0pt} % Set paragraph indentation to zero
+\setlength{\bibhang}{0pt} % Set hanging indentation to zero
+
+%% \bibliography{bibliography}
+\bibliography{BIBFILE}
+
+% Remove page numbers
+\pagestyle{empty}
+
+\begin{document}
+
+\nocite{*}
+\defbibheading{bibliography}{} % Remove the bibliography heading
+\printbibliography[heading=bibliography]
+
+\end{document}

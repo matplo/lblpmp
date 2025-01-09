@@ -866,7 +866,7 @@ def main():
                     json.dumps(record.q(args.query_json), indent=2),
                 )
             continue
-        print(record.data)
+        # print(record.data)
     if args.output:
         fout.close()
 

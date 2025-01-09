@@ -72,7 +72,7 @@ if [[ ! -z "$VIRTUAL_ENV" ]]; then
 				deactivate
 		fi
 		# just to be sure...
-		[ ! -z "$VIRTUAL_ENV"] && export VIRTUAL_ENV=""
+		[ ! -z "$VIRTUAL_ENV" ] && export VIRTUAL_ENV=""
 	fi
 fi
 
