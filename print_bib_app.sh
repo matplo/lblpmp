@@ -61,6 +61,14 @@ pdflatex ${tex_file}
 pdf2ps ${foutput}.pdf 
 
 echo ""
+separator_plain "BIBTEX LISTING BEGIN"
+echo ""
+cat ${bib_file}
+echo ""
+separator_plain "BIBTEX LISTING END"
+echo ""
+
+echo ""
 separator_plain "PMP LISTING BEGIN"
 echo ""
 # ps2ascii ${foutput}.ps | sed 's/     //g'
