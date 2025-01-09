@@ -9,7 +9,7 @@ do
 	fi
 	to_install="${to_install} ${expkg}"
 done
-if [ ! -z ${to_install} ]; then
+if [ ! -z "${to_install}" ]; then
 	sed -i 's|http://deb.debian.org/debian-security|http://deb.debian.org/debian|g' /etc/apt/sources.list
 	apt-get update
 	apt-get install ${to_install} -y --fix-missing
